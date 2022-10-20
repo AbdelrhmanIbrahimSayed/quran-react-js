@@ -1,13 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import PageNotFound from './component/PageNotFound';
+import SurahName from './component/SurahName';
+import Surah from './component/Surah';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<App />}>
+          <Route path='/' element={<SurahName />} /> 
+          <Route path=':id' element={<Surah />} />
+        </Route>
+
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
+
+    </BrowserRouter>
+
   </React.StrictMode>
 );
 
